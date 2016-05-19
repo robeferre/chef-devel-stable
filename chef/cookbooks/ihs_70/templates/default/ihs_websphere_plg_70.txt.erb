@@ -1,0 +1,29 @@
+################################################################################
+# 
+# A common use of an options file is to run the wizard in silent mode. This lets
+# the options file author specify wizard settings without having to run the
+# wizard in graphical or console mode. To use this options file for silent mode
+# execution, use the following command line arguments when running the wizard:
+# 
+#   install -options "responsefile.txt" -silent
+#
+################################################################################ 
+# Note: Synchronous Silent Installs
+# ---------------------------------
+# On non-Windows operating systems, silent installs will execute in a synchronous process. 
+# The process will not return until the silent install has completed.
+#
+# For the silent install to run synchronously on Windows, you must run the 
+# executable in the following way:
+#
+#    START /WAIT  install.exe -options "responsefile.txt" -silent
+#
+#
+################################################################################
+
+-OPT allowNonRootSilentInstall=true
+-OPT silentInstallLicenseAcceptance=true
+-OPT disableOSPrereqChecking=true
+-OPT installType=remote
+-OPT installLocation="<%= @ihs_plg_location %>"
+-OPT webServerSelected=none 

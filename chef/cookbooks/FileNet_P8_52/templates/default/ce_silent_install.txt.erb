@@ -1,0 +1,37 @@
+# silent install sample response file
+# To trigger a silent installation from the command line with this file, add the following parameter:
+# -f ce_silent_install.txt
+
+#-------------------------------------------------------------------------------
+# Do not change the value of INSTALLER_UI.
+#-------------------------------------------------------------------------------
+INSTALLER_UI=silent
+
+#License Acceptance Panel
+#-------------------------
+LICENSE_ACCEPTED=true
+
+#Install feature list 
+#Valid features: ContentEngineServer,Tools
+#Tools could be set only on Linux (not on zLinux and any of the other Unix OS'es) 
+CHOSEN_INSTALL_FEATURE_LIST=ContentEngineServer,Tools
+
+#Choose Install Folder
+#---------------------
+USER_INSTALL_DIR=/opt/IBM/FileNet/ContentEngine
+
+#Specify Server URL to be used in WcmApiConfig.properties file for Process Engine
+# For example,  
+# http://localhost:9080/wsi/FNCEWS40MTOM/ for WebSphere, 
+# http://localhost:7001/wsi/FNCEWS40MTOM/ for WebLogic, 
+# http://localhost:8080/wsi/FNCEWS40MTOM/ for Jboss.         
+# Change the port number appropriately, as per your application server
+# Change the protocol to https if you plan to configure for SSL
+#-------------------------------------------------
+CCLWCM_URL=http://<%= @localhost %>:9080/wsi/FNCEWS40MTOM/
+
+#Install Complete
+#Set LAUNCH_CM to 1 to launch Configuration Manager
+#--------------------------------------------------
+LAUNCH_CM=0
+

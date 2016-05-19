@@ -1,0 +1,15 @@
+name		      'oracle'
+maintainer        'IBM'
+maintainer_email  'dasc@br.ibm.com'
+license           'Apache 2.0'
+description       'Installs and configures Oracle for server'
+long_description  IO.read(File.join(File.dirname(__FILE__), 'README.md'))
+version           '1.0.0'
+recipe            'install', 'Realize which operating system are running and switch to the right recipe'
+recipe            'oracle::server_*', 'Installs Oracle for the proper operating system that are running'
+
+supports 'rhel'
+supports 'aix'
+supports 'windows'
+
+depends 'windows'

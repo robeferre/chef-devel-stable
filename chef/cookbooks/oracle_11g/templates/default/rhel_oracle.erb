@@ -1,0 +1,30 @@
+#!/bin/bash
+# chkconfig: 345 99 10
+# description: Oracle auto start-stop script.
+ 
+# Set ORA_OWNER to the user id of the owner of the
+# Oracle database in ORA_HOME.
+ 
+ORA_OWNER=oracle
+RETVAL=0
+ 
+case "$1" in
+    'start')
+        # Start the Oracle databases:
+        # The following command assumes that the oracle login
+        # will not prompt the user for any values
+        su - $ORA_OWNER -c "/home/oracle/ora_start.sh"
+        touch /var/lock/subsys/oracle
+        ;;
+    'stop')
+        # Stop the Oracle databases:
+        # The following command assumes that the oracle login
+        # will not prompt the user for any values
+        su - $ORA_OWNER -c "/home/oracle/ora_stop.sh"
+        rm -f /var/lock/subsys/oracle
+        ;;
+    *)
+        echo $"Usage: $0 {start|stop}"
+        RETVAL=1
+esac
+exit $RETVAL

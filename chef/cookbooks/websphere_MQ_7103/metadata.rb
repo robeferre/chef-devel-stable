@@ -1,0 +1,10 @@
+name             "websphere_MQ_7103"
+maintainer       "IBM"
+maintainer_email "flageuls@fr.ibm.com"
+license          "Apache 2.0"
+description      "WebSphere MQ Series."
+long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
+version          "1.0"
+depends          "chef_handler"
+depends		 "windows"
+depends		 "ibm_network_handler"

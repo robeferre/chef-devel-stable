@@ -1,0 +1,184 @@
+# IBM FileNet Content Engine Client Installer Silent Input File
+#
+# This file contains values to configure Install with the options specified  
+# when the wizard is run with the "-silent" command line option. Read each
+# setting's documentation for information on how to change its value.
+# 
+# To trigger a silent installer from the command line with this file, use the 
+# following command:
+#
+#[installer name].bin -i silent -f ceclient_silent_install.txt
+#
+
+#-------------------------------------------------------------------------------
+# Do not change the value of INSTALLER_UI.
+#-------------------------------------------------------------------------------
+INSTALLER_UI=silent
+
+#License Acceptance Panel - Must be set to true for install to complete
+#-------------------------
+LICENSE_ACCEPTED=true
+
+
+#Specify Content Engine Client Installation Path
+#---------------------
+USER_INSTALL_DIR=/opt/IBM/FileNet/CEClient
+
+#Select FileNet P8 Applications
+#Enter 1 for each application on the same server that will use the Content Engine Client files.
+#Enter 0 for each application to skip. You must also provide the installation path for 
+#items that you set to 1.
+#----------------------
+UPDATE_AE=1
+UPDATE_RM=0
+UPDATE_XT=0
+UPDATE_QR=0
+UPDATE_CM8=0
+UPDATE_MCS=0
+UPDATE_CMIS=0
+UPDATE_CASEMGR=0
+UPDATE_CN=1
+UPDATE_RCF=0
+UPDATE_OTHER=0
+
+#Application Engine Installation Path
+# Specify the complete path where you want the Content Engine Client program files installed.
+#---------------------------------
+AE_FOLDER=/opt/FileNet/AE
+
+#Records Manager Installation Path
+# Specify the complete path where you want the Content Engine Client program files installed.
+#------------------------------
+RM_FOLDER=/opt
+
+#Workplace XT Installation Path
+# Specify the complete path where you want the Content Engine Client program files installed.
+#---------------------------
+XT_FOLDER=/opt/IBM/FileNet/WebClient
+
+#IBM FileNet Services for Lotus Quickr Installation Path
+# Specify the complete path where you want the Content Engine Client program files installed.
+#---------------------------
+QR_FOLDER=/opt/IBM/FN Services for Quickr
+
+#DB2 Content Manager Installation Path
+# Specify the complete path where you want the Content Engine Client program files installed.
+#---------------------------------
+CM8_FOLDER=/opt/IBM/db2cmv8
+
+#InfoSphere Master Content Installation Path
+# Specify the complete path where you want the Content Engine Client program files installed.
+# UPDATE_MCS must be set to 1 for this setting to apply.
+#---------------------------------
+MCS_FOLDER=/opt/IBM/MasterContentServer
+
+#IBM Content Management Interoperability Services for FileNet Content Manager Installation Path
+# Specify the complete path where you want the Content Engine Client program files installed.
+# UPDATE_CMIS must be set to 1 for this setting to apply.
+#---------------------------------
+CMIS_FOLDER=/opt/IBM/FN_CMIS
+
+#IBM Case Manager Installation Path
+# Specify the complete path where you want the Content Engine Client program files installed.
+# UPDATE_CASEMGR must be set to 1 for this setting to apply.
+#---------------------------------
+CASEMGR_FOLDER=/opt/IBM/CaseManagement
+
+#IBM Content Navigator Installation Path
+# Specify the complete path where you want the Content Engine Client program files installed.
+# UPDATE_CN must be set to 1 for this setting to apply.
+#---------------------------------
+CN_FOLDER=/opt/IBM/ECMClient
+
+#IBM Content Navigator Installation Path
+# Specify the complete path where you want the Content Engine Client program files installed.
+# UPDATE_RCF must be set to 1 for this setting to apply.
+#---------------------------------
+RCF_FOLDER=/opt/IBM/FileNet/RulesConnectivityFramework
+
+#Other Application Installation Path
+# Specify the complete path where you want the Content Engine Client program files installed.
+#--------------------------------
+OTHER_FOLDER=/opt/IBM/FileNet/CEClient
+
+#Content Engine Application Server Type
+#Enter 1 for the application server type you use. Enter 0 for all other server types.
+#Where APP_SERVER_WS is WebSphere, APP_SERVER_WL is WebLogic, and APP_SERVER_JB is JBoss.
+#---------------------------------
+APP_SERVER_WS=1
+APP_SERVER_WL=0
+APP_SERVER_JB=0
+
+#Specify URLs for EJB Transport
+#Specify the URLs for the Content Engine EJB client API. The CLIENT_EJBURL URL will contain the
+# WcmApiConfig.properties file, which is required for applications to communicate with Content Engine
+# Server, regardless of whether they use the EJB or Web Services transport method. The
+# UPLOAD_EJBURL upload URL and DOWNLOAD_EJBURL download URL are used for internal processes during
+# EJB transport activities.
+# Default port for Websphere is 2809, Weblogic is 7001 and Jboss is 8080
+#-------------------------
+CLIENT_EJBURL=cemp:iiop://<%= @localhost %>:2809/FileNet/Engine
+UPLOAD_EJBURL=cemp:iiop://<%= @localhost %>:2809/FileNet/Engine
+DOWNLOAD_EJBURL=cemp:iiop://<%= @localhost %>:2809/FileNet/Engine
+
+#Specify URL for Web Services Transport
+# Specify the URL for the Content Engine Web Services client API. This URL will contain the
+# WcmApiConfig.properties file, which is required for applications to communicate with Content Engine
+# Server, regardless of whether they use the EJB or Web Services transport method.
+# Default port for Websphere is 9080, Weblogic is 7001 and Jboss is 8080
+#-------------------------
+CLIENT_WSIURL=cemp:http://<%= @localhost %>:9080/wsi/FNCEWS40MTOM/
+
+
+# Common files location. Specify the P8 common files directory for creating the taskmaninstances.xml file. 
+#The taskmaninstances.xml file is needed for stopping all IBM Case Foundation Software during CPE Client installation updates.
+#---------------------
+FN_P8TASKMAN_HOME=/opt/IBM/FileNet/CommonFiles
+
+#Component Manager Content Platform Engine URL
+#For installs on AE and Workplace XT machines (when UPDATE_AE and UPDATE_XT is 
+#set to "1" above), specify the URL that the Component Manager must use to 
+#connect to the Content Platform Engine using Web Services transport.
+ComponentManagerCEURL=http://<%= @localhost %>:9080/wsi/FNCEWS40MTOM
+
+#Add REST Service
+#For installs on Workplace XT machines (when UPDATE_XT is set to "1" above), 
+#specify whether the installer should add the REST service. Valid values are 
+#"1" for true and "0" for false.
+AddRESTService=0
+
+#Create Deployment File
+#The Content Engine Client Installer can automatically create the deployment file for your application.  
+# If you have additional configuration to perform on the client, you can skip this step and create 
+# the deployment file later. A value of 1 creates the deployment files.
+# Set CREATE_DEPLOY_FILE=0 to skip this step.
+CREATE_DEPLOY_FILE=1
+
+#Download CE Server Name
+#The Content Engine Client Installer will obtain the installation files it needs to for setup directly
+# from the Content Engine via a download.  Use the following to specify the connection parameters needed
+# to allow the installer to access the download service on the Content Engine.
+#If HTTP  is to be used, set DOWNLOAD_PROTOCOL_HTTP to 1 and DOWNLOAD_PROTOCOL_HTTPS to 0
+#If HTTPS is to be used, set DOWNLOAD_PROTOCOL_HTTP to 0 and DOWNLOAD_PROTOCOL_HTTPS to 1
+#DOWNLOAD_PROTOCOL_HTTP and DOWNLOAD_PROTOCOL_HTTPS are mutually exclusive. Only one of them needs to be set at a time.
+#	Default http/https ports that could be used for the different app servers
+#	AppServer		http/https
+#	WebSphere 		9080/9043
+#	Weblogic		7001/7002
+#	JBoss			8080/443
+#-------------------------
+DOWNLOAD_CE_SERVER_NAME=CEServer
+DOWNLOAD_PORT_NUMBER=9080
+DOWNLOAD_PROTOCOL_HTTP=1
+DOWNLOAD_PROTOCOL_HTTPS=0
+
+#Choose the option to download the Content Engine Client files from the Content Engine Server or from the 
+# Content Engine Client installation package itself.
+#Set INSTALL_FROM_CE_CLIENT_INSTALLATION_PACKAGE to 0, which indicates that the Content Engine Client 
+# installation program must download the Content Engine Client files from Content Engine Server.
+#Set INSTALL_FROM_CE_CLIENT_INSTALLATION_PACKAGE to 1, which indicates the the Content Engine Client 
+# installation program must install the Content Engine Client files from the Content Engine Client installation package itself.
+#The default is to set INSTALL_FROM_CE_CLIENT_INSTALLATION_PACKAGE to 0.
+#Setting INSTALL_FROM_CE_CLIENT_INSTALLATION_PACKAGE to 1, could potentially cause the Content Engine Client files 
+# to be incompatible with Content Engine Server.
+INSTALL_FROM_CE_CLIENT_INSTALLATION_PACKAGE=1

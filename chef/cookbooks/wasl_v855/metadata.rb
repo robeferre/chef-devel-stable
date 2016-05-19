@@ -1,0 +1,10 @@
+name             "wasl_v855"
+maintainer       "IBM"
+maintainer_email "rfjunior@br.ibm.com"
+license          "Apache 2.0"
+description      "WebSphere Liberty deployment."
+long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
+version          "2.0"
+depends          "chef_handler"
+depends          "ibm_network_handler"
+depends			     "im"

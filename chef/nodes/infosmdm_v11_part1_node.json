@@ -1,0 +1,3 @@
+{ 
+  "run_list": ["role[infosmdm_v11_part1_role]"]
+}

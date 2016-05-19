@@ -1,0 +1,6 @@
+{
+  "run_list": [
+  				"role[wee6_role]",
+  				"role[wee6fp1_role]"
+  		       ]
+}

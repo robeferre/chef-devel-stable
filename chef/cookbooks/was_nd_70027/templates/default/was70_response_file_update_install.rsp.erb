@@ -1,0 +1,24 @@
+################################################################################
+#
+# InstallShield Options File
+#
+# Wizard name: Install
+# Wizard source: setup.jar
+#
+# This file can be used to configure Install with the options specified below
+# when the wizard is run with the "-options" command line option. Read each
+# setting's documentation for information on how to change its value.
+# Please enclose all values within a single pair of double quotes.
+# 
+# A common use of an options file is to run the wizard in silent mode. This lets
+# the options file author specify wizard settings without having to run the
+# wizard in graphical or console mode. To use this options file for silent mode
+# execution, use the following command line arguments when running the wizard:
+# 
+#    -options "D:\UpdateInstaller\responsefile.updiinstaller.txt" -silent
+#
+################################################################################
+
+-OPT silentInstallLicenseAcceptance="true"
+-OPT disableOSPrereqChecking="true"
+-OPT installLocation=<%= @installLocation %>

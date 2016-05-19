@@ -1,0 +1,3 @@
+{
+  "run_list": ["role[bpm_ps_8012_role]"]
+}

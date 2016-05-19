@@ -1,0 +1,31 @@
+################################################################################
+#
+# This is the silent install response file for installing maintenance packages
+# using the update installer.
+# 
+# A common use of an options file is to run the wizard in silent mode. This lets
+# the options file author specify wizard settings without having to run the
+# wizard in graphical or console mode. To use this options file for silent mode
+# execution, *uncomment* and modify the parameters defined within.
+#
+# Use the following command line when running the wizard from the update 
+# installer directory:
+# 
+#    update -options responsefiles/install.txt -silent
+#
+# Please enclose all values within a single pair of double quotes.
+#
+################################################################################
+
+-W maintenance.package=<%= @maintance_package %>
+
+-OPT disableNonBlockingPrereqChecking="false"
+
+-W product.location=<%= @installLocation %>
+
+################################################################################
+#
+# Do not edit these values.
+#
+#
+-W update.type="install"

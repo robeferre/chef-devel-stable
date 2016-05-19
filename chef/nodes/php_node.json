@@ -1,0 +1,6 @@
+{
+  "run_list": [
+  					"role[php5510_role]",
+  					"recipe[cleanup]"
+    		  ]
+}

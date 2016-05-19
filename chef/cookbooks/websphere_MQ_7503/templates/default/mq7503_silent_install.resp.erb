@@ -1,0 +1,119 @@
+#------------------------------------------------------------------------------
+# WebSphere MQ Patch Loader - Silent Install Response File
+# ========================================================
+# 
+# Please tailor this silent install proeprties file to your requirements and 
+# then install the fix pack files using the following command:
+#
+# <path to installer>\WS-MQ-7.5.0-FP0003 -f <full path>/silent_install.resp
+#
+# NOTE:
+# - You must specify the FULL PATH to the respnse file (not a relative path)
+#------------------------------------------------------------------------------
+
+
+#------------------------------------------------------------------------------
+# Please do not edit the three properties below
+#------------------------------------------------------------------------------
+INSTALLER_UI=silent
+CHOSEN_FEATURE_LIST=Fixpack
+CHOSEN_INSTALL_FEATURE_LIST=Fixpack
+
+
+#------------------------------------------------------------------------------
+# Installation Type
+# -----------------
+#
+# SILENT_INSTALL_TYPE can take one of the following two values:
+#
+# LoadOnly 
+#   Load files only
+#      The fix pack files will be loaded on to the computer and a shortcut will
+#      be added to the WebSphere MQ program group "Apply Fix Pack 7.5.0.1"
+#      clicking this will allow the user to apply the fix pack to a WebSphere
+#      MQ installation.
+#
+# LoadApply 
+#   Load files and apply fix pack
+#      As above except that specifying additional options below will allow the 
+#      user to load the fix pack files and apply the fix pack to a selected 
+#      WebSphere MQ installation
+#------------------------------------------------------------------------------
+SILENT_INSTALL_TYPE=LoadApply
+
+
+#------------------------------------------------------------------------------
+# Choose Destination Folder
+# -------------------------
+#
+# The location to which the fix pack files will be saved.  
+# 
+# Please note:
+# 1. This is not the location of a WebSphere MQ installation.  The Fix pack 
+#    files exist as a seperate installation and can then be applied to one or 
+#    more WebSphere MQ installations.
+# 2. Write Windows backslash path separators as \\
+# 3. Do not add enclosing quotes to directories with spaces in them
+#------------------------------------------------------------------------------
+USER_INSTALL_DIR=C:\\mqm\\source\\WebSphere MQ 7.5.0.3
+
+#==============================================================================
+#==============================================================================
+#
+# Options below are used if you have chosen to "Load files and apply fix pack".  
+#
+# They are ignored if you have chosen to "Load files only".
+#
+#==============================================================================
+#==============================================================================
+
+
+#------------------------------------------------------------------------------
+# Installation Name
+# -----------------
+# This is the installation name of the MQ installation to patch (as returned 
+# by the command "dspmqinst")
+#------------------------------------------------------------------------------
+MQPINSTALLATIONNAME=Installation1
+
+
+#------------------------------------------------------------------------------
+# Backup Directory
+# ----------------
+# This is the location to which files that are to be replaced by the patch will
+# be stored away (for use in case the patch is later removed).
+#
+# This would usually be a subdirectory of the installation, unless security
+# considerations prevent this.
+#------------------------------------------------------------------------------
+MQPBACKUPPATH=C:\\mqm\\Maint_0.3
+
+#------------------------------------------------------------------------------
+# Log File Name
+# -------------
+# This is the log file to be used by the patch applier program.
+#------------------------------------------------------------------------------
+MQPLOG=C:\\amqicsdn.txt
+
+
+#------------------------------------------------------------------------------
+# Reboot
+# ------
+# This controls the behaviour when an install requires a reboot:
+# SILENT_MQPREBOOT=0 - reboot is suppressed
+# SILENT_MQPREBOOT=1 - reboot goes ahead
+#------------------------------------------------------------------------------
+MQPREBOOT=0
+
+
+#------------------------------------------------------------------------------
+# In-use File handling
+# --------------------
+# specifies what to do if in-use files are discovered. 
+# SILENT_MQPINUSEOK=0 - patch fails to apply if files are in use.
+# SILENT_MQPINUSEOK=1 - updating of in-use files is delayed until after reboot.
+#------------------------------------------------------------------------------
+MQPINUSEOK=0
+
+
+

@@ -1,0 +1,61 @@
+# IBM Content Search Services Silent Installer Configuration
+#
+# This file contains values to configure Install with the options specified  
+# when the wizard is run with the "-silent" command line option. Read each
+# setting's documentation for information on how to change its value.
+# 
+# To trigger a silent installer from the command line with this file, use the 
+# following command:
+#
+# 5.2.0-CSS-AIX.bin -i silent -f css_silent_install.txt
+# 5.2.0-CSS-LINUX.bin -i silent -f css_silent_install.txt
+# 5.2.0-CSS-LINUX64.bin -i silent -f css_silent_install.txt
+# 5.2.0-CSS-SOLARIS.bin -i silent -f css_silent_install.txt
+# 5.2.0-CSS-ZLINUX.bin -i silent -f css_silent_install.txt
+#
+
+# License Acceptance Panel
+#-----------------------------
+# Must be set to true for install to complete
+#-----------------------------
+LICENSE_ACCEPTED=TRUE
+
+#Choose Install Folder
+#---------------------
+# Specify IBM Content Search Services Installation Path
+# This is the path to the Configuration data directory location.
+# This parameter is ignored on server upgrades or reinstalls.
+#---------------------
+USER_INSTALL_DIR=/opt/IBM/ContentSearchServices
+
+# Specify CSS server installation location
+#-------------------------
+# This location must be unique for each additional server installed.
+#-------------------------
+SERVER_INSTALL_DIR=/opt/IBM/ContentSearchServices/CSS_Server
+
+# Enter an authentication token seed
+#-------------------------
+# The token seed generates a unique token that the server uses to communicate 
+# with other components.  If you do not enter a value, a value will be generated
+# automatically. This parameter is ignored on server upgrades or reinstalls.
+#-------------------------
+USER_INPUT_RESULT_SEED=
+
+# Enter the port number
+#-------------------------
+# This is the port number which the token communicates with other components.
+# This port must be unique for each additional server installed.
+# This parameter is ignored on server upgrades or reinstalls.
+#-------------------------
+USER_INPUT_RESULT_PORT=8191
+
+# Enter the maximum heap memory
+#-------------------------
+# The value should be set according to JVM heap size specifications.
+# Suggested values are 1500 MB for 32-bit JVMs and 3000 MB for 64-bit
+# JVMs. The maximum possible heap size that can be allocated to 
+# a 32-bit JVM is 1800 MB. (Enter the number only, not the "MB".)
+# This parameter is ignored on server upgrades or reinstalls.
+#-------------------------
+USER_INPUT_MAX_HEAP_SIZE=1500

@@ -1,0 +1,137 @@
+# REPLACE /opt/IBM/cognos/c10_64 with installed directory of Cognos! 
+
+# Cognos Module for Apache 2.0 - Aliased as mod_cognos below
+LoadModule cognos_module "/opt/ibm/cognos/c10_64/cgi-bin/mod2_2_cognos.so"
+
+# Additional MIME Types required for GO! Mobile Blackberry Client
+AddType .cod    application/vnd.rim.cod
+AddType .jad    text/vnd.sun.j2me.app-descriptor
+
+# Cognos Script Alias Section
+ScriptAlias /cognos/cgi-bin "/opt/ibm/cognos/c10_64/cgi-bin"
+<Directory "/opt/ibm/cognos/c10_64/cgi-bin">
+    Options Indexes MultiViews
+    AllowOverride None
+    Order allow,deny
+    Allow from all
+</Directory>
+
+ScriptAlias /cognos8/cgi-bin "/opt/ibm/cognos/c10_64/cgi-bin"
+<Directory "/opt/ibm/cognos/c10_64/cgi-bin">
+    Options Indexes MultiViews
+    AllowOverride None
+    Order allow,deny
+    Allow from all
+</Directory>
+
+# /ibmcognos/cards Index directory for GO! Search
+#--Alias /ibmcognos/cards "/opt/IBM/cognos/c10_64/cards"
+#--<Directory "/opt/IBM/cognos/c10_64/cards">
+#--     allow from all
+#--     Options Indexes MultiViews FollowSymLinks
+#--</Directory>
+
+Alias /cognos "/opt/ibm/cognos/c10_64/webcontent"
+Alias /cognos8 "/opt/ibm/cognos/c10_64/webcontent"
+<Directory "/opt/ibm/cognos/c10_64/webcontent">
+    Options Indexes MultiViews FollowSymLinks
+    AllowOverride None
+    Order allow,deny
+    Allow from all
+</Directory>
+
+# Alternate Samples Directories
+#--Alias /samples/images "/opt/IBM/cognos/c10_64/webcontent/samples"
+#--Alias /images "/opt/IBM/cognos/c10_64/webcontent/samples"
+#--<Directory "/opt/IBM/cognos/c10_64/webcontent/samples">
+#--  Options Indexes MultiViews
+#--  AllowOverride None
+#--  Options None
+#--  Order allow,deny
+#--  Allow from all
+#--  Dav On
+#--</Directory>
+
+#This is the directory to the XQE logs
+Alias /XQE "/opt/ibm/cognos/c10_64/logs/XQE"
+<Directory "/opt/ibm/cognos/c10_64/logs/XQE">
+        Options Indexes MultiViews
+         AllowOverride None
+         Options +Indexes
+         Order allow,deny
+         Allow from all
+</Directory>
+
+# Cognos Module Lines
+#Note for Apache 2.0 uses mod2_2_cognos.c.c instead of mod_cognos.c
+#Uncomment below to use cognos module 
+<IfModule mod2_2_cognos.c>
+  CGIBinDir /opt/ibm/cognos/c10_64/cgi-bin
+</IfModule>
+
+<Location /cognos/cgi-bin/cognos_module>
+ SetHandler cognos-handler
+  Order allow,deny
+  Allow from all
+</Location>
+
+<Location /cognos/cgi-bin/diag_cognos_module>
+  SetHandler cognos-handler
+  Order allow,deny
+  Allow from all
+</Location>
+#Uncomment above to use cognos module
+
+# Configured Content Cache Expiration
+# Content Expiration for built-in images and skins
+<IfModule mod_expires.c>
+        <Location /cognos/pat/images>
+                ExpiresActive on
+                ExpiresDefault "access plus 1 hour"
+                ExpiresByType image/gif "access plus 5 day"
+                ExpiresByType image/jpg "access plus 5 day"
+                ExpiresByType image/png "access plus 5 day"
+                ExpiresByType text/javascript "access plus 5 day"
+                ExpiresByType text/css "access plus 5 day"
+        </Location>
+        <Location /cognos/skins>
+                ExpiresActive on
+                ExpiresDefault "access plus 1 hour"
+                ExpiresByType image/gif "access plus 5 day"
+                ExpiresByType image/jpg "access plus 5 day"
+                ExpiresByType image/png "access plus 5 day"
+                ExpiresByType text/javascript "access plus 5 day"
+                ExpiresByType text/css "access plus 5 day"
+        </Location>
+</IfModule>
+
+<IfModule mod_deflate.c>
+        DeflateBufferSize       8096
+        DeflateCompressionLevel 9
+        DeflateMemLevel         9
+        DeflateWindowSize       15
+        DeflateFilterNote       Input instream
+        DeflateFilterNote       Output outstream
+        DeflateFilterNote       Ratio ratio
+
+        # Uncomment the LogFormat and CustomLog to Report the usefulness of deflation
+        #LogFormat '%>s %b "%r" %{outstream}n/%{instream}n %{ratio}n%%' deflate
+        #CustomLog /var/log/apache2/deflate.log deflate 
+        CustomLog /opt/IBM/HTTPServer/logs/deflate.log deflate
+
+        <Location />
+                # Compress HTML, StyleSheets, Javascript
+                AddOutputFilterByType DEFLATE text/html
+                AddOutputFilterByType DEFLATE text/css
+                AddOutputFilterByType DEFLATE application/x-javascript
+
+                # Input filter is applied for uploaded WebDAV content
+                SetInputFilter  DEFLATE
+
+                # Output filter is applied for delivery to Browser
+                SetOutputFilter DEFLATE
+
+                # Don't compress images or PDF because there's not much benefit
+                SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png|pdf)$ no-gzip dont-vary
+        </Location>
+</IfModule>

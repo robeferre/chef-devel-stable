@@ -1,0 +1,34 @@
+-- ---------------------------------------------------- {COPYRIGHT-TOP} -----
+-- Licensed Materials - Property of IBM
+-- Restricted Materials of IBM
+--
+-- 5725-E59
+--;
+-- (C) Copyright IBM Corp. 2008, 2011  All Rights Reserved.
+--
+-- US Government Users Restricted Rights - Use, duplication, or
+-- disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+-- ---------------------------------------------------- {COPYRIGHT-END} -----
+-- Please Replace the following tags with their appropriate values --
+-- MDM11DB : The name of the DB2 Database to create
+-- <TERRITORY> : Territory name
+
+--CEATE DB MDM11DB AUTOMATIC STORAGE YES
+ --USING CODESET UTF-8 TERRITORY <TERRITORY> COLLATE USING UCA400_NO PAGESIZE 8 K;
+
+ CREATE DB MDM11DB AUTOMATIC STORAGE YES USING CODESET UTF-8 TERRITORY us COLLATE USING UCA400_NO PAGESIZE 16 K;
+
+-- in real customer environments, the following style is suggested
+-- CREATE DB MDM11DB AUTOMATIC STORAGE YES ON /<DATAPATH1> DBPATH ON /HOME/<SCHEMA> 
+--  USING CODESET UTF-8 TERRITORY <TERRITORY> COLLATE USING UCA400_NO PAGESIZE 8 K;
+
+
+UPDATE DB CONFIG FOR MDM11DB USING APP_CTL_HEAP_SZ 144;
+UPDATE DB CONFIG FOR MDM11DB USING APPLHEAPSZ 768;
+UPDATE DB CONFIG FOR MDM11DB USING LOGPRIMARY 10;
+UPDATE DB CONFIG FOR MDM11DB USING LOGSECOND 20;
+UPDATE DB CONFIG FOR MDM11DB USING LOGFILSIZ 5000;
+UPDATE DB CONFIG FOR MDM11DB USING STMT_CONC LITERALS;
+UPDATE DB CONFIG FOR MDM11DB USING DFT_DEGREE 1;
+
+TERMINATE;

@@ -1,0 +1,28 @@
+
+#################################################################################
+# 
+# WebSphere Application Server V7.0 installation options file
+# 
+# This options file runs the installation wizard in silent mode. This lets the
+# options file author specify installation settings without having to run the
+# wizard in graphical mode. To use this options file for silent mode execution,
+# use the following command line arguments when running the wizard:
+# 
+#    -options "/<responsefile.path>/responsefile.nd.txt" -silent
+# 
+# Read the documentation for information on changing the value for each option.
+# Enclose all values within a single pair of double quotes.
+################################################################################
+
+  -OPT silentInstallLicenseAcceptance="true"
+  -OPT disableOSPrereqChecking="true"
+  -OPT installType="installNew"
+  -OPT profileType=<%= @profileType %>
+  -OPT feature="languagepack.console.all"
+  -OPT feature="languagepack.server.all" 
+  -OPT PROF_enableAdminSecurity="false"
+  -OPT PROF_adminUserName=
+  -OPT PROF_adminPassword=
+  -OPT installLocation=<%= @installLocation %>
+
+

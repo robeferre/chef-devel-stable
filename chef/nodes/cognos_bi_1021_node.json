@@ -1,0 +1,3 @@
+{
+  "run_list": ["role[cognos_bi_1021_role]"]
+}

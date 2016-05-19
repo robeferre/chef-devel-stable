@@ -1,0 +1,10 @@
+name             "no_op"
+maintainer       "IBM"
+maintainer_email "acm@us.ibm.com"
+license          "none"
+description      "Performs no operation or install."
+long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
+version          "1.0"
+depends          "chef_handler"
+depends			 "windows"
+depends          "ibm_network_handler"

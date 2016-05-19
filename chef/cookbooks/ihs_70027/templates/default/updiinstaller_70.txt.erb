@@ -1,0 +1,170 @@
+################################################################################
+#
+# InstallShield Options File
+#
+# Wizard name: Install
+# Wizard source: setup.jar
+#
+# This file can be used to configure Install with the options specified below
+# when the wizard is run with the "-options" command line option. Read each
+# setting's documentation for information on how to change its value.
+# Please enclose all values within a single pair of double quotes.
+# 
+# A common use of an options file is to run the wizard in silent mode. This lets
+# the options file author specify wizard settings without having to run the
+# wizard in graphical or console mode. To use this options file for silent mode
+# execution, use the following command line arguments when running the wizard:
+# 
+#    -options "D:\UpdateInstaller\responsefile.updiinstaller.txt" -silent
+#
+################################################################################
+
+#################################################################################
+#
+# License Acceptance
+#
+# Valid Values:
+#	true - Accepts the license. Will install the product.
+#	false - Declines the license. Install will not occur.  
+#
+# If no install occurs, this will be logged to a temporary log file in the 
+# user's temporary directory.
+#
+# By changing the silentInstallLicenseAcceptance property in this response file 
+# to "true", you agree that you have reviewed and agree to the terms of the 
+# IBM International Program License Agreement accompanying this program, which is 
+# located at <CD_ROOT>\updi.primary.pak\repository\updi.legal\lafiles.  If you do 
+# not agree to these terms, do not change the value or otherwise download, install, 
+# copy, access, or use the program and promptly return the program and proof of 
+# entitlement to the party from whom you acquired it to obtain a refund of the 
+# amount you paid.
+#
+# 
+-OPT silentInstallLicenseAcceptance="true"
+
+
+################################################################################
+#
+# NonRoot Install Settings
+#
+# The option indicates whether you accept the limitations associated with installing 
+# as a non-root user, which are detailed in the documentation. (specifics to be add)
+#
+# Valid Values:
+#	true - Accepts the limitations. Will install the product.
+#	false - Do not accept the limitations. Install will not occur.  
+#
+# Uncomment the following only if you're installing as a non-root user. Specify one of the
+# valid options listed above before proceeding to install:
+# -OPT allowNonRootSilentInstall="true"
+
+################################################################################
+# Operating System Prerequisite Checking
+#
+# If you want to disable operating system prerequisite checking, uncomment
+# the following line. This will notify the installer to continue with
+# the installation and log the warnings even though the prerequisite checking
+# has failed.
+#
+-OPT disableOSPrereqChecking="true"
+
+################################################################################
+# Existing Installation Checking
+#
+# If you want to disable the checking for existing Update Installer, uncomment
+# the following line.  This will notify the installer to continue with the
+# installation and log the warnings even though the prerequisite checking has
+# failed.
+# 
+-OPT disableEarlyPrereqChecking="true"
+
+################################################################################
+#
+# Install Location
+#
+# The install location of the product. Specify a valid directory into which the
+# product should be installed. If the directory contains spaces, enclose it in
+# double-quotes as shown in the Windows example below. Note that spaces in the
+# install location is only supported on Windows operating systems. Maximum path 
+# length is 60 characters for Windows 2000 and Windows XP.
+# 
+# Below is the list of default install locations for each supported operating
+# system when you're installing as a root user.  By default, in this response file, 
+# the Windows install location is used.  If you want to use the default install 
+# location for another operating system, uncomment the appropriate default install 
+# location entry (by removing '#') and then comment out (by adding '#') the 
+# Windows operating system entry below.
+#
+# AIX Default Install Location:
+#
+#  -OPT installLocation="/usr/IBM/WebSphere/UpdateInstaller"
+#
+# HP-UX, Solaris or Linux Default Install Location:
+#
+-OPT installLocation="<%= @ihs_update_location %>"
+#
+# i5OS Default Install Location:
+#
+#  -OPT installLocation="/QIBM/IBM/WebSphere/UpdateInstaller/V61/<productOffering>"
+#
+# Windows Default Install Location:
+#
+
+#-OPT installLocation="C:\Program Files\IBM\WebSphere\UpdateInstaller"
+
+# If you are installing as non-root user on Unix or non-administrator on Windows, 
+# the following default install locations are suggested. Be sure you have write 
+# permission for the install location chosen.
+#
+# AIX Default Install Location:
+#
+#  -OPT installLocation="<user's home>/IBM/WebSphere/UpdateInstaller"
+#
+# HP-UX, Solaris or Linux Default Install Location:
+#
+#  -OPT installLocation="<user's home>/IBM/WebSphere/UpdateInstaller"
+#
+# i5OS Default Install Location: 
+#
+#  <not applicable>
+#
+# Windows Default Install Location: 
+#
+# -OPT installLocation="C:\IBM\WebSphere\UpdateInstaller"
+
+#
+# When the target operating system is Windows, or Linux IA32, you can
+# skip the creation of start menu by set the skipStartMenu to true.  
+# This option does not apply for all other platforms.
+#
+# -OPT skipStartMenu=true
+
+################################################################################
+# 
+# Trace Control Output
+# 
+# Valid Values for traceFormat:
+#     ALL - output files saved as separate plain text and XML files.
+#     text - output file saved in plain text format only.
+#     XML - output file saved in standard Java logging XML format only.
+# 
+# Trace output is saved as both text and XML files by default, but it can be 
+# restricted to only one output format.
+# 
+# The amount of trace information captured can be controlled. All informational
+# messages, warnings, and severe warnings are output to a trace file by default. 
+# 
+# Valid values for traceLevel:
+#     OFF - No trace file is produced.
+#     SEVERE - Only severe errors are output to a trace file.
+#     WARNING - Non-fatal exceptions and warnings are added to trace file.
+#     INFO - Informational messages are added to the trace file.
+#     CONFIG - Configuration related messages are added to the trace file.
+#     FINE - Trace all public method calls.
+#     FINER - Trace all non-public method calls except getters and setters.
+#     FINEST - Trace all methods, entry and exit parameters, and return values.
+# 
+# -OPT traceFormat=ALL
+# -OPT traceLevel=INFO
+# 
+################################################################################

@@ -1,0 +1,3 @@
+{ 
+  "run_list": ["role[infostreams_v32_role]"]
+}

@@ -1,0 +1,3 @@
+{
+  "run_list": ["role[sql_server_role]"]
+}

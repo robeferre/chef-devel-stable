@@ -1,0 +1,3 @@
+{
+  "run_list": ["role[mq7104_server_role]"]
+}

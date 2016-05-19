@@ -1,0 +1,85 @@
+;
+;  odbc.ini
+;
+[ODBC Data Sources]
+NZSQL = NetezzaSQL
+
+
+[NZSQL]
+;Path of a driver used for database connection
+Driver                = /usr/local/nz/lib/libnzsqlodbc3.so
+
+;A decription used to identify the database connection properties.
+Description           = NetezzaSQL ODBC
+
+;The name of a machine or IP address where the database is located.
+Servername            = nzbz01.sby.dst.ibm.com
+
+;The port number to connect.
+Port                  = 5480
+
+;The name of a database.
+Database              = GS_DB
+
+;The name of a valid user.
+Username              = dst_br_dasc
+
+;The password for  the user.
+Password              = Just4now
+
+;Only Select SQL statements will be allowed if this field is checked.
+ReadOnly              = false
+
+;When this option is enabled and the application bindtype is same as backend
+;datatype the query performance will be faster.Query performance gain will be achieved 
+;only for single select statements (not for batch queries).It also works in case when
+;application bind type is different than backend datatype but there are some restrictions on it.
+FastSelect            = false
+
+;When set to true, system tables will be included in the available table list.
+ShowSystemTables      = false
+
+;When set to true, use old (2.5) functionality for returning schemas in SQLTables.
+LegacySQLTables       = false
+
+;Specifies login timeout in seconds.
+LoginTimeout          = 0
+
+;Specifies query timeout in seconds.
+QueryTimeout          = 0
+
+;Specifies date format as follows -
+; 1: YMD
+; 2: MDY
+; 3: DMY
+DateFormat            = 1
+
+;When selected, driver treats SQL_C_NUMERIC buffers as SQL_C_CHAR buffers.
+NumericAsChar         = false
+
+;Return SQL_BIT as "1"/"0" when char.
+SQLBitOneZero         = false
+
+;When enabled, replaces all occurences of CRLF, CR and LF with a single space.
+StripCRLF             = false
+
+;Specifies level of security on the system
+securityLevel         = preferredUnSecured
+
+;Name of the Root CA certificate.
+caCertFile            =
+
+;Specifies maximum errors allowed. 0 value means no limit on loadMaxErrors value.
+;loadMaxErrors         = 1
+
+;If value is true, it rounds the data of numeric columns whose precision exceeds the precision defined.
+;loadRoundFraction     = 0
+
+
+[ODBC]
+IANAAppCodePage=4
+InstallDir=/opt/odbc32v51
+Trace=0
+TraceDll=/opt/odbc32v51/lib/odbctrac.so
+TraceFile=odbctrace.out
+UseCursorLib=0

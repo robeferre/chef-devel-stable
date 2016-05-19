@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<agent-input acceptLicense='true'>
+  <server>
+    <repository location='<%= node['wee62']['wl_disk'] %>'/>
+  </server>
+  <profile id='IBM Worklight' installLocation='/opt/IBM/Worklight'>
+    <data key='user.appserver.selection2' value='was'/>
+    <data key='user.appserver.was.installdir' value='/opt/IBM/WebSphere/Liberty'/>
+    <data key='user.appserver.was.profile' value='Liberty'/>
+    <data key='user.appserver.was85liberty.serverInstance_' value='simpleServer'/>
+    <data key='user.database.selection2' value='db2'/>
+    <data key='user.database.preinstalled' value='true'/>
+    <data key='user.database.db2.host' value='localhost'/>
+    <data key='user.database.db2.port' value='50000'/>
+    <data key='user.database.db2.driver' value='/home/db2inst1/sqllib/java/db2jcc4.jar'/>
+    <data key='user.database.db2.appcenter.username' value='db2inst1'/>
+    <data key='user.database.db2.appcenter.password' value='dst4you'/>
+    <data key='user.database.db2.appcenter.dbname' value='APPCNTR'/>
+    <data key='user.database.db2.appcenter.schema' value=''/>
+    <data key='user.writable.data.user' value=''/>
+    <data key='user.writable.data.group2' value=''/>
+  </profile>
+  <install modify='false'>
+    <offering id='com.ibm.imp' version='6.2.0.20140613_0756' profile='IBM Worklight' features='main.feature' installFixes='none'/>
+  </install>
+  <preference name='com.ibm.cic.common.core.preferences.eclipseCache' value='/opt/IBM/IMShared'/>
+    <preference name='com.ibm.cic.common.core.preferences.connectTimeout' value='30'/>
+    <preference name='com.ibm.cic.common.core.preferences.readTimeout' value='45'/>
+    <preference name='com.ibm.cic.common.core.preferences.downloadAutoRetryCount' value='0'/>
+    <preference name='offering.service.repositories.areUsed' value='true'/>
+    <preference name='com.ibm.cic.common.core.preferences.ssl.nonsecureMode' value='false'/>
+    <preference name='com.ibm.cic.common.core.preferences.http.disablePreemptiveAuthentication' value='false'/>
+    <preference name='http.ntlm.auth.kind' value='NTLM'/>
+    <preference name='http.ntlm.auth.enableIntegrated.win32' value='true'/>
+    <preference name='com.ibm.cic.common.core.preferences.preserveDownloadedArtifacts' value='true'/>
+    <preference name='com.ibm.cic.common.core.preferences.keepFetchedFiles' value='false'/>
+    <preference name='PassportAdvantageIsEnabled' value='false'/>
+    <preference name='com.ibm.cic.common.core.preferences.searchForUpdates' value='false'/>
+    <preference name='com.ibm.cic.agent.ui.displayInternalVersion' value='false'/>
+    <preference name='com.ibm.cic.common.sharedUI.showErrorLog' value='true'/>
+    <preference name='com.ibm.cic.common.sharedUI.showWarningLog' value='true'/>
+    <preference name='com.ibm.cic.common.sharedUI.showNoteLog' value='true'/>
+</agent-input>

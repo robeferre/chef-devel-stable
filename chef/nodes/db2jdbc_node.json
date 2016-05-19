@@ -1,0 +1,5 @@
+{
+ "run_list":[
+                "recipe[db2_ese_v97::db2jdbc_install]"
+            ]
+}

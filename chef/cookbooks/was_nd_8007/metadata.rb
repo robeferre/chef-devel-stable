@@ -1,0 +1,11 @@
+name             "was_nd_8007"
+maintainer       "IBM"
+maintainer_email "flageuls@fr.ibm.com"
+license          "Apache 2.0"
+description      "Websphere Application Server Network Deployment."
+long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
+version          "1.0"
+depends          "chef_handler"
+depends          "ibm_network_handler"
+depends		"was_nd_80"
+depends		 "windows"

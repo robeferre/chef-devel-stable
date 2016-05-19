@@ -1,0 +1,3 @@
+{
+  "run_list": ["role[java_7_jre_role]"]
+}

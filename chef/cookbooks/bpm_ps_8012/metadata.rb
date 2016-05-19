@@ -1,0 +1,11 @@
+name             	"bpm_8012"
+maintainer       	"IBM"
+maintainer_email 	"flageuls@fr.ibm.com"
+license          	"Apache 2.0"
+description      	"Business Process Manager."
+long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
+version          	"1.0"
+depends          	"chef_handler"
+depends		"windows"
+depends		"was_nd_8007"
+depends		 "ibm_network_handler"

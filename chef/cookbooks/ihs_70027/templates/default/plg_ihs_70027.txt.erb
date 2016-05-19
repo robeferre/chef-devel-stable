@@ -1,0 +1,8 @@
+#USAGE INSTALL:
+# <WAS_UPDATE_INSTALLER>/update.sh -options "/home/wasuser/ihs.update.response.txt" -silent
+#
+-W maintenance.package="<%= @fixpack_path %>"
+-W product.location="<%= @ihs_location %>"
+#-OPT checkFilePermissions="true" 
+-OPT disableNonBlockingPrereqChecking="false" 
+-W update.type="install"

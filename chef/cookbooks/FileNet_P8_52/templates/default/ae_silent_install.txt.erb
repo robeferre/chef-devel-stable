@@ -1,0 +1,200 @@
+
+################################################################################
+#
+# InstallShield Options File
+#
+# This file contains values that were specified during a recent execution of
+# Install. It can be used to configure Install with the options specified below
+# when the wizard is run with the "-options" command line option. Read each
+# setting's documentation for information on how to change its value.
+# 
+# A common use of an options file is to run the wizard in silent mode. This lets
+# the options file author specify wizard settings without having to run the
+# wizard in graphical or console mode. To use this options file for silent mode
+# execution, use the following command line arguments when running the wizard:
+# 
+#    -options "AE_silent_install.txt" -silent
+#
+################################################################################
+
+
+################################################################################
+#
+# Custom Dialog: License
+#
+# The initial state of the License panel. The accept and reject option states
+# are stored as Variables and must be set with -V
+#
+
+-V licenseAccepted="true"
+
+
+################################################################################
+#
+# P8 AE Install Location
+#
+# The install location of the product. Specify a valid directory into which the
+# product should be installed. If the directory contains spaces, enclose it in
+# double-quotes. For example, to install the product to /opt/My
+# Product, use
+# 
+#    -P installLocation="/opt/My Product"
+#    -V IS_DESTINATION="/opt/My Product" 	
+
+
+-P installLocation="/opt/FileNet/AE"
+-V IS_DESTINATION="/opt/FileNet/AE"
+-V InstallDirDBS="/opt/FileNet/AE"
+
+
+################################################################################
+#
+# Application Server
+#
+# The application server value can be 'WebSphere', 'WebLogic', or 'JBoss'
+#
+#	-V vAppServer=WebSphere
+#
+# The application server version must be set in tandem with the application server
+#
+#	-V vAppServerVersion=7
+#
+# The current valid values for combination are:  
+#
+#	 WebSphere - versions (5.1, 6, 7)
+#    Weblogic - versions (8.1, 9, 10)	
+#	 JBoss - versions (4)
+#
+
+-V vAppServer=WebSphere
+-V vAppServerVersion=8
+
+
+################################################################################
+#
+# Transport Type
+#
+# This should always be set to 'EJB'
+#
+
+-V ceTransportType=EJB
+
+################################################################################
+#
+# WcmApiConfig URLS
+#
+# Set up the 3 URLS for JavaAPI
+#
+# WebLogic Example (EJB):  cemp:t3://<CE_Name>:7001/FileNet/Engine
+# WebSphere Example (EJB): cemp:iiop://<CE_Name>:2809/FileNet/Engine
+# JBOSS Example (EJB): cemp:jnp://<CE_Name>:1099/FileNet/Engine
+#
+# Do not change noCE*URL values
+#
+
+-V noCEDownURL=false
+-V noCEUpURL=false
+-V ceClientSoftwareURL=cemp:iiop://<%= @hostname %>:2809/FileNet/Engine
+-V ceDownloadURL=cemp:iiop://<%= @hostname %>:2809/FileNet/Engine
+-V ceUploadURL=cemp:iiop://<%= @hostname %>:2809/FileNet/Engine
+
+################################################################################
+#
+# Application Name
+#
+# This is the name of the application for Ear File deployment
+#
+
+-V ApplicationName=Workplace
+-V EarDeploy=true
+-V WarDeploy=false
+-V SkipDeploymentFileGeneration=false
+
+################################################################################
+#
+# Authentication Type
+#
+# This set whether to use Container Based Authentication for Workplace.
+# The default is false.
+
+-V UseContainerBased=false
+
+
+################################################################################
+#
+# Documentation Server
+#
+# This is the server for documentation files
+#
+
+-V DocServer="http://pic.dhe.ibm.com/infocenter/p8docs/v5r2m0"
+
+################################################################################
+#
+# Configuration Directory
+#
+# This is the name of the Directory that AE configuration files will be placed
+#
+
+-V ConfigDirFull="/opt/FileNet/Config/AE"
+-V ConfigDirDBS="/opt/FileNet/Config/AE"
+
+################################################################################
+#
+# Upload Directory
+#
+# This is the location to store temporary WOrkplace uploaded files
+#
+
+-V UploadDir="/opt/FileNet/AE/Upload"
+-V UploadDirDBS="/opt/FileNet/AE/Upload"
+
+################################################################################
+#
+# Download Directory
+#
+# This is the location to store temporary Workplace downloaded files
+#
+
+-V DownloadDir="/opt/FileNet/AE/Download"
+-V DownloadDirDBS="/opt/FileNet/AE/Download"
+
+################################################################################
+#
+# Logging Directory
+#
+# This is the location to store Workplace log files
+#
+
+-V LogDir="/opt/FileNet/AE/logs"
+-V LogDirDBS="/opt/FileNet/AE/logs/"
+
+################################################################################
+#
+# User Token Key File
+#
+# This is the full Path Name of the User Token Crypto File  
+#
+
+-V UserTokenPath="/opt/FileNet/Authentication/UTCryptoKeyFile.properties"
+-V UserTokenPathDBS="/opt/FileNet/Authentication/UTCryptoKeyFile.properties"
+
+################################################################################
+#
+# User Token Number of Keys
+#
+# Number of Keys in User Token cryptokey file
+#
+
+-V NumKeys=100
+
+
+################################################################################
+#
+# User Token File Keys Length
+#
+# Number of Bytes for each User Token key
+#
+
+-V KeyLen=128
+

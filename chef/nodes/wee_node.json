@@ -1,0 +1,3 @@
+{
+  "run_list": ["role[wee6_role]"]
+}
